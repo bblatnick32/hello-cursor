@@ -15,12 +15,17 @@ type Command =
 
 const USAGE = "usage: hello-greet <name>\n";
 const REPEAT_COUNT = /^[1-9]\d*$/;
+const MAX_REPEAT = 1_000_000;
 
 function parseRepeatCount(token: string): number | undefined {
   if (!REPEAT_COUNT.test(token)) {
     return undefined;
   }
-  return Number(token);
+  const count = Number(token);
+  if (!Number.isSafeInteger(count) || count > MAX_REPEAT) {
+    return undefined;
+  }
+  return count;
 }
 
 function parse(userArgs: readonly string[]): Command {
