@@ -203,6 +203,15 @@ const cases = [
     },
   },
   {
+    label: '["--repeat", "1000000000", "Ada"]',
+    args: ["--repeat", "1000000000", "Ada"],
+    result: {
+      exitCode: 1 as const,
+      stdout: "" as const,
+      stderr: "usage: hello-greet <name>\n",
+    },
+  },
+  {
     label: '["--repeat", "Ada"]',
     args: ["--repeat", "Ada"],
     result: {
