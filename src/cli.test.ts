@@ -27,4 +27,21 @@ describe("cli", () => {
     expect(result.stderr).toBe("usage: hello-greet <name>\n");
     expect(result.status).toBe(1);
   }, 30_000);
+
+  test("--json Ada", () => {
+    const result = spawnCli(["--json", "Ada"]);
+    expect(JSON.parse(result.stdout)).toEqual({
+      message: "hello, Ada",
+      name: "Ada",
+    });
+    expect(result.stderr).toBe("");
+    expect(result.status).toBe(0);
+  }, 30_000);
+
+  test("--json", () => {
+    const result = spawnCli(["--json"]);
+    expect(result.stdout).toBe("");
+    expect(result.stderr).toBe("usage: hello-greet <name>\n");
+    expect(result.status).toBe(1);
+  }, 30_000);
 });
