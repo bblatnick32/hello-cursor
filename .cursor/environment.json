@@ -1,0 +1,4 @@
+{
+  "name": "hello-greet",
+  "install": "if [ -f package.json ]; then npm ci; else echo 'no package.json at this revision; skipping npm ci'; fi"
+}
