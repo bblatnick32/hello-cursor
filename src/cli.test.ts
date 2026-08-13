@@ -44,4 +44,11 @@ describe("cli", () => {
     expect(result.stderr).toBe("usage: hello-greet <name>\n");
     expect(result.status).toBe(1);
   }, 30_000);
+
+  test("--repeat 3 Ada", () => {
+    const result = spawnCli(["--repeat", "3", "Ada"]);
+    expect(result.stdout).toBe("hello, Ada\nhello, Ada\nhello, Ada\n");
+    expect(result.stderr).toBe("");
+    expect(result.status).toBe(0);
+  }, 30_000);
 });
